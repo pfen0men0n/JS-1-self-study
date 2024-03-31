@@ -7,7 +7,7 @@ const checkStringLength = function (string, maxLength) {
 console.log(checkStringLength('Привет как дела собака ты сутулая?', 50));
 
 const isPalindrome = function (string) {
-striing = string.toLowerCase().replace(/[^a-z]+/g,"");
+string = string.toLowerCase().replace(/[^a-z]+/g,"");
 return string === string.split("").reverse().join("");
 
 }
