@@ -1,13 +1,13 @@
 const TOTAL_PHOTO_OBJECT_AMOUNT = 25;
 
-const PHOTO_LIKES_AMOUNT = {
-    min: 15,
-    max:200,
+const PhotoLikesAmount = {
+    MIN: 15,
+    MAX:200,
 };
 
-const PHOTO_COMMENTS_AMOUNT = {
-    min: 0,
-    max: 30,
+const PhotoCommentsAmount = {
+    MIN: 0,
+    MAX: 30,
 };
 
 const getRandomPositiveInteger = (min, max) => {
@@ -67,8 +67,8 @@ const createMockPhotoObject = (index) => ({
     id: index,
     url: `photos/${index + 1}.jpg`, 
     description: getRandomArrayElement(PHOTO_DESCRIPTIONS_ARRAY),
-    likes: getRandomPositiveInteger(PHOTO_LIKES_AMOUNT.min, PHOTO_LIKES_AMOUNT.max),
-    comments: createComments(getRandomPositiveInteger(PHOTO_COMMENTS_AMOUNT.min, PHOTO_COMMENTS_AMOUNT.max)),
+    likes: getRandomPositiveInteger(PhotoLikesAmount.MIN, PhotoLikesAmount.MAX),
+    comments: createComments(getRandomPositiveInteger(PhotoCommentsAmount.MIN, PhotoCommentsAmount.MAX)),
 });
 
 const createPhotoObjects = () => Array.from({length: TOTAL_PHOTO_OBJECT_AMOUNT}, (_x, index) => createMockPhotoObject(index));
