@@ -84,5 +84,6 @@ const createMockPhotoObject = (index) => ({
 });
 
 const createPhotoObjects = () => Array.from({length: TOTAL_PHOTO_OBJECT_AMOUNT}, (_x, index) => createMockPhotoObject(index));
+createPhotoObjects();
 
 export {createPhotoObjects};

@@ -1,4 +1,5 @@
-import { createPhotoObjects } from '../js/utils.js';
+import {createPhotoObjects} from './utils.js';
+import {renderThumbnails} from './thumbnails.js';
 
-console.log(createPhotoObjects());
+renderThumbnails(createPhotoObjects);
 
