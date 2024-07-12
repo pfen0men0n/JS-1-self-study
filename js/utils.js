@@ -1,5 +1,7 @@
 import { TOTAL_PHOTO_OBJECT_AMOUNT, PhotoLikesAmount, PhotoCommentsAmount, COMMENT_AUTHOR_NAMES_ARRAY, PHOTO_DESCRIPTIONS_ARRAY, PHOTO_COMMENTS_ARRAY} from '../js/mocks.js';
 
+const isEscKey = (evt) => evt.key === 'Escape';
+
 /**
  * Функция конвертации времени формата HH:MM с типом "строка" в минуты с типом "число". 
  * Функция принимает следующие параметры:
@@ -83,7 +85,7 @@ const createMockPhotoObject = (index) => ({
     comments: createComments(getRandomPositiveInteger(PhotoCommentsAmount.MIN, PhotoCommentsAmount.MAX)),
 });
 
-const createPhotoObjects = () => Array.from({length: TOTAL_PHOTO_OBJECT_AMOUNT}, (_x, index) => createMockPhotoObject(index));
+const createPhotoObjects = () => Array.from({length: TOTAL_PHOTO_OBJECT_AMOUNT}, (x, index) => createMockPhotoObject(index));
 createPhotoObjects();
 
-export {createPhotoObjects};
+export {createPhotoObjects, isEscKey};
