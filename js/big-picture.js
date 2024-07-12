@@ -10,6 +10,9 @@ const commentsLoadElement = bigPictureElement.querySelector('.comments-loader');
 const LOAD_COMMENT_COUNT = 5; 
 let renderedComments = LOAD_COMMENT_COUNT;
 
+/**
+ * @function createComment - Функция по отображению информации сколько комментариев из скольки возможных отображено на странице 
+ */
 const createComment = (comments) => {
     if (renderedComments >= comments.length) {
         renderedComments = comments.length;
@@ -24,6 +27,9 @@ const createComment = (comments) => {
     }
   };
 
+ /**
+  * @function renderComments - функция выполняющая отрисовку пользовательских комментариев к фото.
+  */ 
 const renderComments = (comments) => {
         commentsListElement.innerHTML = "";
         const commentsListFragment = document.createDocumentFragment();
@@ -41,7 +47,9 @@ const renderComments = (comments) => {
     };
 
 
-
+/**
+ * @function openBigPhoto функция которая при клике на миниатюру отрисовываем полноразмерное фото с комментариями.
+ */
 const openBigPhoto = ({url, likes, comments, description}) => {
     bigPictureElement.classList.remove('hidden');
     document.body.classList.add('modal-open');
@@ -55,6 +63,9 @@ const openBigPhoto = ({url, likes, comments, description}) => {
     commentsLoadElement.addEventListener('click', onLoadButtonClick);    
 };
 
+/**
+*@function onDocumentKeydown - функция обработчик нажатия клавищи Esc.
+ */
 function onDocumentKeydown(evt) {
     if (isEscKey(evt)) {
       evt.preventDefault();
@@ -62,16 +73,25 @@ function onDocumentKeydown(evt) {
     }
   }
   
+  /**
+   * @function onCloseButtonClick - обработчик нажатия на крестик(закрытие) модального окна с большим фото.
+   */
   function onCloseButtonClick() {
     closeBigPhoto();
   }
   
+  /**
+   * @function onLoadButtonClick - функция обработчик нажатия на загрузку дополнительных комментариев.
+   */
   function onLoadButtonClick() {
     const comments = commentsListElement.children;
     renderedComments += LOAD_COMMENT_COUNT;
     createComment(comments);
   }
   
+  /**
+   * @function closeBigPhoto - функция реализующая закрытие модального окна с отображаемой большй фоторгафией.
+   */
   function closeBigPhoto() {
     bigPictureElement.classList.add('hidden');
     document.body.classList.remove('modal-open');
