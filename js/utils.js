@@ -1,11 +1,15 @@
 import { TOTAL_PHOTO_OBJECT_AMOUNT, PhotoLikesAmount, PhotoCommentsAmount, COMMENT_AUTHOR_NAMES_ARRAY, PHOTO_DESCRIPTIONS_ARRAY, PHOTO_COMMENTS_ARRAY} from '../js/mocks.js';
 
+/**
+ * @function isEscKey функция проверки нажатия на кнопку Esc.
+ * @param {*} evt принимаемый параметр.
+ * @returns булево значение true или false.
+ */
 const isEscKey = (evt) => evt.key === 'Escape';
 
 /**
  * Функция конвертации времени формата HH:MM с типом "строка" в минуты с типом "число". 
- * Функция принимает следующие параметры:
- * @param {} time Принимает данные о времени с типом string и видом HH:MM
+ * @param {} time принимаемый параметр с типом string и видом HH:MM
  * @let [a, b] = time.split(':') используем метод деструктурирующего присваивания.
  * Т.е. это то, как если бы мы из переменной time методом split отделили часы от минут и записали бы их по очереди в массив,
  * только сделали на оборот. Объявили миссив с часами и минутами деструктурировав в него методом split из меременной значения
@@ -19,14 +23,12 @@ const convertHoursToMinutes = (time) => {
 }
 
 /**
- * Функция, которая принимает время начала и конца рабочего дня, а также время старта и продолжительность встречи в минутах и возвращает true, 
- * если встреча не выходит за рамки рабочего дня, и false, если выходит.
- * Функция принимает следующие параметры:
- * @param {*} startTime 
- * @param {*} endTime 
- * @param {*} meetingTimeStarts 
- * @param {*} meetingTime 
- * @returns 
+ * Функция расчета, выходит ли встреча за рамки рабочего дня?
+ * @param {*} startTime принимаемый параметр начала рабочего дня.
+ * @param {*} endTime принимаемый параметр конца рабочего дня.
+ * @param {*} meetingTimeStarts принимаемый параметр начала встречи.
+ * @param {*} meetingTime принимаемый параметр продолжительности встречи.
+ * @returns булево значение true или false.
  */
 const withinTeWorkingDay = (startTime, endTime, meetingTimeStarts, meetingTime) => {
     const startMinutes = convertHoursToMinutes(startTime);
