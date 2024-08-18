@@ -1,4 +1,6 @@
 import {isEscKey} from './utils.js';
+import {resetPicturescale} from './scale-edit.js';
+import {resetEffects} from './effects-edit.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const MAX_COMMENT_LENGTH = 140;
@@ -134,6 +136,8 @@ function openModalWindow() {
  * @function closeModalWindow функция обработчик закрытия модального окна
  */
 function closeModalWindow() {
+    resetPicturescale();
+    resetEffects();
     pristine.reset();
     imgFormElement.reset();
     imgUploadOverlayElement.classList.add('hidden');
