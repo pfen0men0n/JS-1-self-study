@@ -4,4 +4,3 @@ import {addValidationAndListeners} from './form.js';
 
 renderThumbnails(createPhotoObjects);
 addValidationAndListeners();
-
