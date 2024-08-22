@@ -1,7 +1,7 @@
 const EFFECTS_LIST = [
     {name: 'none', min: 1, max: 100, step: 1, start: 100,},
     {name: 'chrome', style: 'grayscale', min: 0, max: 1, step: 0.1, unit: '',},
-    {name: 'sepia', style: 'sepia', min: 0, max: 1, step: 0.1, unit: ','},
+    {name: 'sepia', style: 'sepia', min: 0, max: 1, step: 0.1, unit: '',},
     {name: 'marvin', style: 'invert', min: 0, max: 100, step: 1, unit: '%',},
     {name: 'phobos', style: 'blur', min: 0, max: 3, step: 0.1, unit: 'px',},
     {name: 'heat', style: 'brightness', min: 1, max: 3, step: 0.1, unit: '',}
@@ -49,18 +49,18 @@ const onSliderUpdate = () => {
     imgUploadPreviewElement.className = '';
     effectLevelValueElement.value = '';
     if(isDefaulEffect()){
-      return;
+    return;
     }
     const sliderValue = sliderElement.noUiSlider.get();
     imgUploadPreviewElement.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
     imgUploadPreviewElement.classList.add(`effects__preview--${chosenEffect.name}`);
     effectLevelValueElement.value = sliderValue;
-  };
-  
-  const resetEffects = () => {
+};
+
+const resetEffects = () => {
     chosenEffect = DEFAULT_EFFECT;
     updateSlider();
-  };
+};
 
 noUiSlider.create(sliderElement, {
     range: {

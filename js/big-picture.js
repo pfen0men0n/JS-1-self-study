@@ -27,7 +27,7 @@ const createComment = (comments) => {
     }
   };
 
- /**
+/**
   * @function renderComments - функция выполняющая отрисовку пользовательских комментариев к фото.
   */ 
 const renderComments = (comments) => {

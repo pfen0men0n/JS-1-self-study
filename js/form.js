@@ -18,7 +18,7 @@ const pristine = new Pristine(imgFormElement, {
     errorTextParent: 'img-upload__field-wrapper',
     errorTextTag: 'div',
     errorTextClass: 'img-upload__field-wrapper--error',
-  }, true);
+}, true);
 
 /**
  * @function isValidCommentLength функция проверки длины комментария
@@ -60,7 +60,7 @@ function normalizeHashtags(tags) {
  */
 function isNormalizedHashtags(value) {
     if (value.length === 0) {
-      return true;
+    return true;
     }
     return normalizeHashtags(value).every((tag) => isValidHashTag(tag));
 };
@@ -115,10 +115,10 @@ function addPristineValidation () {
  */
 function onDocumentEscKeydown(evt) {
     if (isEscKey(evt)) {
-      evt.preventDefault();
-      if (!(hashTagTextFieldElement === document.activeElement || commentTextFieldElement === document.activeElement)) {
+    evt.preventDefault();
+    if (!(hashTagTextFieldElement === document.activeElement || commentTextFieldElement === document.activeElement)) {
         closeModalWindow();
-      }
+    }
     }
 };
 
@@ -170,6 +170,7 @@ canceleButtonElement.addEventListener('click', onCanceleButtonClick);
 function addValidationAndListeners () {
     imgUploadFileElement.addEventListener('submit', openModalWindow);
     addPristineValidation();
-  }
-  export {addValidationAndListeners};
+}
+
+export {addValidationAndListeners};
 
