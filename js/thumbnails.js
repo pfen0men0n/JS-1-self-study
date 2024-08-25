@@ -1,4 +1,4 @@
-import { openBigPhoto } from "./big-picture.js";
+import { openBigPhoto } from './big-picture.js';
 
 const picturesContainer = document.querySelector('.pictures');
 picturesContainer.classList.remove('visually-hidden');
@@ -8,7 +8,7 @@ const picturesTemlpate = document.querySelector('#picture').content.querySelecto
 
 const renderThumbnails = (drawPhotos) => {
     const picturesContainerFragment = document.createDocumentFragment();
-    drawPhotos().forEach(({url, description, likes, comments})=> {
+    drawPhotos.forEach(({url, description, likes, comments})=> {
     const userPhotoElement = picturesTemlpate.cloneNode(true);
     userPhotoElement.querySelector('.picture__img').src = url;
     userPhotoElement.querySelector('.picture__img').alt = description;
@@ -24,4 +24,4 @@ const renderThumbnails = (drawPhotos) => {
 
     picturesContainer.append(picturesContainerFragment);
 };
-export {renderThumbnails};
+export { renderThumbnails };

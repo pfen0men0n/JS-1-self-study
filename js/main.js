@@ -1,6 +1,9 @@
-import {createPhotoObjects} from './utils.js';
-import {renderThumbnails} from './thumbnails.js';
-import {addValidationAndListeners} from './form.js';
+import { renderThumbnails } from './thumbnails.js';
+import { addValidationAndListeners } from './forms/form.js';
+import { getData } from './network/api.js';
 
-renderThumbnails(createPhotoObjects);
+
+getData((pictures) => {
+    renderThumbnails(pictures);
+});
 addValidationAndListeners();
