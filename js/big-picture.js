@@ -1,4 +1,4 @@
-import { isEscKey } from "./utils.js";
+import { isEscKey } from './utilites/utils.js';
 
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPictureCancelElement = bigPictureElement.querySelector('.big-picture__cancel');
@@ -101,7 +101,7 @@ function onDocumentKeydown(evt) {
     renderedComments = LOAD_COMMENT_COUNT;
   }
 
-export {openBigPhoto};
+export { openBigPhoto };
 
 
 
