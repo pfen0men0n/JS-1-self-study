@@ -4,6 +4,7 @@ import { resetEffects } from './effects-edit.js';
 import { showErrorMessagePopup, showSuccessMessagePopup } from '../network/alert-messages.js';
 import { sendData } from '../network/api.js';
 
+const FILE_TYPES = ['png', 'jpg', 'jpeg'];
 const MAX_HASHTAG_COUNT = 5;
 const MAX_COMMENT_LENGTH = 140;
 const VALID_HASHTAG = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -14,7 +15,11 @@ const imgUploadOverlayElement = imgFormElement.querySelector('.img-upload__overl
 const canceleButtonElement = imgUploadOverlayElement.querySelector('.img-upload__cancel');
 const hashTagTextFieldElement = imgUploadOverlayElement.querySelector('.text__hashtags');
 const commentTextFieldElement = imgUploadOverlayElement.querySelector('.text__description');
+const fileFieldInputElement = imgFormElement.querySelector('.img-upload__input');
 const submitButton = imgFormElement.querySelector('.img-upload__submit');
+const photoPreviewElement = imgFormElement.querySelector('.img-upload__preview img');
+const effectsPreviewElement = imgFormElement.querySelectorAll('.effects__preview');
+
 
 const pristine = new Pristine(imgFormElement, {
     classTo: 'img-upload__field-wrapper',
@@ -89,6 +94,30 @@ function isHashtagsReapits(value) {
 };
 
 /**
+ * @function isValidType функция проверки типа загружаемого файла на соответсвие
+ * @param {*} file 
+ * @returns возврящает результат проверки соответсвует ли хоть одно расширение файла тому что можно загружать
+ */
+const isValidType = (file) => {
+    const fileName = file.name.toLowerCase();
+    return FILE_TYPES.some((it) => fileName.endsWith(it));
+};
+
+/**
+ * @function onFileInputChange функциия подставноки загружаемого видео в превью и мелкие превьюхи изменения фильтров
+ */
+const onFileInputChange = () => {
+  const file = fileFieldInputElement.files[0];
+
+  if(file && isValidType(file)) {    
+  photoPreviewElement.src = URL.createObjectURL(file);
+  effectsPreviewElement.forEach((preview) => {
+      preview.style.backgroundImage = `url('${photoPreviewElement.src}')`;
+    });
+  }
+};
+
+/**
  * @function addPristineValidation функция валидации формы с полями хештегов и комментария
  */
 function addPristineValidation () {
@@ -125,16 +154,17 @@ function openModalWindow() {
     document.body.classList.add('modal-open');
     canceleButtonElement.addEventListener('click', onCanceleButtonClick);
     document.addEventListener('keydown', onDocumentEscKeydown);
+    onFileInputChange();
 };
 
 /**
  * @function closeModalWindow функция обработчик закрытия модального окна
  */
 function closeModalWindow() {
+    imgFormElement.reset();
     resetPicturescale();
     resetEffects();
     pristine.reset();
-    imgFormElement.reset();
     imgUploadOverlayElement.classList.add('hidden');
     document.body.classList.remove('modal-open');
     canceleButtonElement.removeEventListener('click', onCanceleButtonClick);
